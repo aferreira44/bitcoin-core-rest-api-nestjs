@@ -1,27 +1,3 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
@@ -58,16 +34,164 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+##  Roadmap
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Blockchain
+- [ ] getbestblockhash
+- [ ] getblock "blockhash" ( verbosity )
+- [ ] getblockchaininfo
+- [ ] getblockcount
+- [ ] getblockfilter "blockhash" ( "filtertype" )
+- [ ] getblockfrompeer "blockhash" peer_id
+- [ ] getblockhash height
+- [ ] getblockheader "blockhash" ( verbose )
+- [ ] getblockstats hash_or_height ( stats )
+- [ ] getchaintips
+- [ ] getchaintxstats ( nblocks "blockhash" )
+- [ ] getdeploymentinfo ( "blockhash" )
+- [ ] getdifficulty
+- [ ] getmempoolancestors "txid" ( verbose )
+- [ ] getmempooldescendants "txid" ( verbose )
+- [ ] getmempoolentry "txid"
+- [ ] getmempoolinfo
+- [ ] getrawmempool ( verbose mempool_sequence )
+- [ ] gettxout "txid" n ( include_mempool )
+- [ ] gettxoutproof ["txid",...] ( "blockhash" )
+- [ ] gettxoutsetinfo ( "hash_type" hash_or_height use_index )
+- [ ] preciousblock "blockhash"
+- [ ] pruneblockchain height
+- [ ] savemempool
+- [ ] scantxoutset "action" ( [scanobjects,...] )
+- [ ] verifychain ( checklevel nblocks )
+- [ ] verifytxoutproof "proof"
 
-## Stay in touch
+### Control
+- [ ] getmemoryinfo ( "mode" )
+- [ ] getrpcinfo
+- [ ] help ( "command" )
+- [ ] logging ( ["include_category",...] ["exclude_category",...] )
+- [ ] stop
+- [ ] uptime
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Mining
+- [ ] getblocktemplate ( "template_request" )
+- [ ] getmininginfo
+- [ ] getnetworkhashps ( nblocks height )
+- [ ] prioritisetransaction "txid" ( dummy ) fee_delta
+- [ ] submitblock "hexdata" ( "dummy" )
+- [ ] submitheader "hexdata"
 
-## License
+### Network
+- [ ] addnode "node" "command"
+- [ ] clearbanned
+- [ ] disconnectnode ( "address" nodeid )
+- [ ] getaddednodeinfo ( "node" )
+- [ ] getconnectioncount
+- [ ] getnettotals
+- [ ] getnetworkinfo
+- [ ] getnodeaddresses ( count "network" )
+- [ ] getpeerinfo
+- [ ] listbanned
+- [ ] ping
+- [ ] setban "subnet" "command" ( bantime absolute )
+- [ ] setnetworkactive state
 
-Nest is [MIT licensed](LICENSE).
+### Rawtransactions
+- [ ] analyzepsbt "psbt"
+- [ ] combinepsbt ["psbt",...]
+- [ ] combinerawtransaction ["hexstring",...]
+- [ ] converttopsbt "hexstring" ( permitsigdata iswitness )
+- [ ] createpsbt [{"txid":"hex","vout":n,"sequence":n},...] [{"address":amount,...},{"data":"hex"},...] ( locktime replaceable )
+- [ ] createrawtransaction [{"txid":"hex","vout":n,"sequence":n},...] [{"address":amount,...},{"data":"hex"},...] ( locktime replaceable )
+- [ ] decodepsbt "psbt"
+- [ ] decoderawtransaction "hexstring" ( iswitness )
+- [ ] decodescript "hexstring"
+- [ ] finalizepsbt "psbt" ( extract )
+- [ ] fundrawtransaction "hexstring" ( options iswitness )
+- [ ] getrawtransaction "txid" ( verbose "blockhash" )
+- [ ] joinpsbts ["psbt",...]
+- [ ] sendrawtransaction "hexstring" ( maxfeerate )
+- [ ] signrawtransactionwithkey "hexstring" ["privatekey",...] ( [{"txid":"hex","vout":n,"scriptPubKey":"hex","redeemScript":"hex","witnessScript":"hex","amount":amount},...] "sighashtype" )
+- [ ] testmempoolaccept ["rawtx",...] ( maxfeerate )
+- [ ] utxoupdatepsbt "psbt" ( ["",{"desc":"str","range":n or [n,n]},...] )
+
+### Signer
+- [ ] enumeratesigners
+
+### Util
+- [ ] createmultisig nrequired ["key",...] ( "address_type" )
+- [ ] deriveaddresses "descriptor" ( range )
+- [ ] estimatesmartfee conf_target ( "estimate_mode" )
+- [ ] getdescriptorinfo "descriptor"
+- [ ] getindexinfo ( "index_name" )
+- [ ] signmessagewithprivkey "privkey" "message"
+- [ ] validateaddress "address"
+- [ ] verifymessage "address" "signature" "message"
+
+### Wallet
+- [ ] abandontransaction "txid"
+- [ ] abortrescan
+- [ ] addmultisigaddress nrequired ["key",...] ( "label" "address_type" )
+- [ ] backupwallet "destination"
+- [ ] bumpfee "txid" ( options )
+- [ ] createwallet "wallet_name" ( disable_private_keys blank "passphrase" avoid_reuse descriptors load_on_startup external_signer )
+- [ ] dumpprivkey "address"
+- [ ] dumpwallet "filename"
+- [ ] encryptwallet "passphrase"
+- [ ] getaddressesbylabel "label"
+- [ ] getaddressinfo "address"
+- [ ] getbalance ( "dummy" minconf include_watchonly avoid_reuse )
+- [ ] getbalances
+- [ ] getnewaddress ( "label" "address_type" )
+- [ ] getrawchangeaddress ( "address_type" )
+- [ ] getreceivedbyaddress "address" ( minconf include_immature_coinbase )
+- [ ] getreceivedbylabel "label" ( minconf include_immature_coinbase )
+- [ ] gettransaction "txid" ( include_watchonly verbose )
+- [ ] getunconfirmedbalance
+- [ ] getwalletinfo
+- [ ] importaddress "address" ( "label" rescan p2sh )
+- [ ] importdescriptors "requests"
+- [ ] importmulti "requests" ( "options" )
+- [ ] importprivkey "privkey" ( "label" rescan )
+- [ ] importprunedfunds "rawtransaction" "txoutproof"
+- [ ] importpubkey "pubkey" ( "label" rescan )
+- [ ] importwallet "filename"
+- [ ] keypoolrefill ( newsize )
+- [ ] listaddressgroupings
+- [ ] listdescriptors ( private )
+- [ ] listlabels ( "purpose" )
+- [ ] listlockunspent
+- [ ] listreceivedbyaddress ( minconf include_empty include_watchonly "address_filter" include_immature_coinbase )
+- [ ] listreceivedbylabel ( minconf include_empty include_watchonly include_immature_coinbase )
+- [ ] listsinceblock ( "blockhash" target_confirmations include_watchonly include_removed )
+- [ ] listtransactions ( "label" count skip include_watchonly )
+- [ ] listunspent ( minconf maxconf ["address",...] include_unsafe query_options )
+- [ ] listwalletdir
+- [ ] listwallets
+- [ ] loadwallet "filename" ( load_on_startup )
+- [ ] lockunspent unlock ( [{"txid":"hex","vout":n},...] persistent )
+- [ ] newkeypool
+- [ ] psbtbumpfee "txid" ( options )
+- [ ] removeprunedfunds "txid"
+- [ ] rescanblockchain ( start_height stop_height )
+- [ ] restorewallet "wallet_name" "backup_file" ( load_on_startup )
+- [ ] send [{"address":amount,...},{"data":"hex"},...] ( conf_target "estimate_mode" fee_rate options )
+- [ ] sendmany "" {"address":amount,...} ( minconf "comment" ["address",...] replaceable conf_target "estimate_mode" fee_rate verbose )
+- [ ] sendtoaddress "address" amount ( "comment" "comment_to" subtractfeefromamount replaceable conf_target "estimate_mode" avoid_reuse fee_rate verbose )
+- [ ] sethdseed ( newkeypool "seed" )
+- [ ] setlabel "address" "label"
+- [ ] settxfee amount
+- [ ] setwalletflag "flag" ( value )
+- [ ] signmessage "address" "message"
+- [ ] signrawtransactionwithwallet "hexstring" ( [{"txid":"hex","vout":n,"scriptPubKey":"hex","redeemScript":"hex","witnessScript":"hex","amount":amount},...] "sighashtype" )
+- [ ] unloadwallet ( "wallet_name" load_on_startup )
+- [ ] upgradewallet ( version )
+- [ ] walletcreatefundedpsbt ( [{"txid":"hex","vout":n,"sequence":n,"weight":n},...] ) [{"address":amount,...},{"data":"hex"},...] ( locktime options bip32derivs )
+- [ ] walletdisplayaddress "address"
+- [ ] walletlock
+- [ ] walletpassphrase "passphrase" timeout
+- [ ] walletpassphrasechange "oldpassphrase" "newpassphrase"
+- [ ] walletprocesspsbt "psbt" ( sign "sighashtype" bip32derivs finalize )
+
+### Zmq
+ - [ ] getzmqnotifications
