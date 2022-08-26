@@ -18,12 +18,8 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/bitcoin-core": [
-        "libs/bitcoin-core/src"
-      ],
-      "@app/bitcoin-core/*": [
-        "libs/bitcoin-core/src/*"
-      ]
+      "@app/bitcoin-core": ["libs/bitcoin-core/src"],
+      "@app/bitcoin-core/*": ["libs/bitcoin-core/src/*"]
     }
   }
 }
