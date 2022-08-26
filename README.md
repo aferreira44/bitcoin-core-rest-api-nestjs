@@ -39,7 +39,7 @@ $ npm run test:cov
 ### Blockchain
 - [ ] getbestblockhash
 - [ ] getblock "blockhash" ( verbosity )
-- [ ] getblockchaininfo
+- [x] getblockchaininfo
 - [ ] getblockcount
 - [ ] getblockfilter "blockhash" ( "filtertype" )
 - [ ] getblockfrompeer "blockhash" peer_id

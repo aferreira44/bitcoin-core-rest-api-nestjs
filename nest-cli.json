@@ -1,5 +1,19 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src"
+  "sourceRoot": "src",
+  "projects": {
+    "bitcoin-core": {
+      "type": "library",
+      "root": "libs/bitcoin-core",
+      "entryFile": "index",
+      "sourceRoot": "libs/bitcoin-core/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/bitcoin-core/tsconfig.lib.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "webpack": true
+  }
 }
