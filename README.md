@@ -1,37 +1,37 @@
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+REST API for Bitcoin Core RPC methods written in Node.js using [NestJS](https://nestjs.com/).
 
 ## Installation
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+$ yarn start
 
 # watch mode
-$ npm run start:dev
+$ yarn start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ npm run test
+$ yarn test
 
 # e2e tests
-$ npm run test:e2e
+$ yarn test:e2e
 
 # test coverage
-$ npm run test:cov
+$ yarn test:cov
 ```
 
 ##  Roadmap
@@ -43,7 +43,7 @@ $ npm run test:cov
 - [ ] getblockcount
 - [ ] getblockfilter "blockhash" ( "filtertype" )
 - [ ] getblockfrompeer "blockhash" peer_id
-- [ ] getblockhash height
+- [x] getblockhash height
 - [ ] getblockheader "blockhash" ( verbose )
 - [ ] getblockstats hash_or_height ( stats )
 - [ ] getchaintips
