@@ -1,3 +1,4 @@
+import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { BitcoinCoreModule } from '@app/bitcoin-core/bitcoin-core.module';
 import { BlockchainController } from './blockchain.controller';
@@ -7,7 +8,7 @@ describe('BlockchainController', () => {
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [BitcoinCoreModule],
+      imports: [ConfigModule.forRoot(), BitcoinCoreModule],
       controllers: [BlockchainController],
     }).compile();
 

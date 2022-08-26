@@ -1,10 +1,16 @@
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  
+  const app = await NestFactory.create(AppModule, {
+    logger:
+      new ConfigService().getOrThrow('NODE_ENV') === 'development'
+        ? ['log', 'debug', 'error', 'verbose', 'warn']
+        : ['error', 'warn'],
+  });
+
   // Swagger configuration
   const config = new DocumentBuilder()
     .setTitle('Bitcoin Core REST API')

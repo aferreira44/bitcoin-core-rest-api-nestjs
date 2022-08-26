@@ -21,12 +21,18 @@ export class BitcoinCoreService {
 
   // TODO: add returned data type
   rpcRequest(method: string, params?: any) {
+    const id = uuidv4();
+    Logger.debug(
+      `BitcoinCoreService.rpcRequest: method: ${method}, params: ${JSON.stringify(
+        params,
+      )}, id: ${id}`,
+    );
     return this.httpService
       .post(
         this.configService.getOrThrow('BITCOIN_CORE_RPC_URL'),
         {
           jsonrpc: '2.0',
-          id: uuidv4(),
+          id,
           method,
           params,
         },
