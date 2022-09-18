@@ -16,7 +16,8 @@ async function bootstrap() {
     .setTitle('Bitcoin Core REST API')
     .setDescription('Bitcoin Core REST API description')
     .setVersion('1.0')
-    .addServer(`${process.env.PROTOCOL}//${process.env.HOST}:${process.env.PORT}`)
+    // TODO: Fix this, duplicated server on Swagger on request
+    // .addServer(`${process.env.PROTOCOL}//${process.env.HOST}:${process.env.PORT}`)
     .addTag('Blockchain')
     .addTag('Control')
     .addTag('Mining')
