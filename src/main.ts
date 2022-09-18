@@ -16,6 +16,7 @@ async function bootstrap() {
     .setTitle('Bitcoin Core REST API')
     .setDescription('Bitcoin Core REST API description')
     .setVersion('1.0')
+    .addServer(`${process.env.PROTOCOL}//${process.env.HOST}:${process.env.PORT}`)
     .addTag('Blockchain')
     .addTag('Control')
     .addTag('Mining')
@@ -26,9 +27,10 @@ async function bootstrap() {
     .addTag('Wallet')
     .addTag('Zmq')
     .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
 
-  await app.listen(3001);
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup(process.env.API_DOCS_PATH, app, document);
+
+  await app.listen(process.env.PORT);
 }
 bootstrap();
