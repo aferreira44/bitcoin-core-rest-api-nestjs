@@ -37,10 +37,10 @@ $ yarn test:cov
 ##  Roadmap
 
 ### Blockchain
-- [ ] getbestblockhash
+- [x] getbestblockhash
 - [ ] getblock "blockhash" ( verbosity )
 - [x] getblockchaininfo
-- [ ] getblockcount
+- [x] getblockcount
 - [ ] getblockfilter "blockhash" ( "filtertype" )
 - [ ] getblockfrompeer "blockhash" peer_id
 - [x] getblockhash height

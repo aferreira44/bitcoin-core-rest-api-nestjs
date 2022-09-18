@@ -13,16 +13,26 @@ export class BitcoinCoreService {
     private readonly configService: ConfigService,
   ) {}
 
-  // TODO: add error handling
   // TODO: remove any type
   getBlockchainInfo(): Observable<any> {
     return this.rpcRequest('getblockchaininfo');
   }
 
+  // TODO: remove any type
   getBlockHash(height: number): Observable<any> {
     return this.rpcRequest('getblockhash', {
       height: Number(height),
     });
+  }
+
+  // TODO: remove any type
+  getBlockCount(): Observable<any> {
+    return this.rpcRequest('getblockcount');
+  }
+
+  // TODO: remove any type
+  getBestBlockHash(): Observable<any> {
+    return this.rpcRequest('getbestblockhash');
   }
 
   // TODO: add returned data type

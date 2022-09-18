@@ -15,6 +15,18 @@ describe('BlockchainController', () => {
     blockchainController = app.get<BlockchainController>(BlockchainController);
   });
 
+  describe('getBestBlockHash', () => {
+    it('getBestBlockHash method should be defined', () => {
+      expect(blockchainController.getBestBlockHash).toBeDefined();
+    });
+  });
+
+  describe('getblock', () => {
+    it('getblock method should be defined', () => {
+      expect(blockchainController.getblock).toBeDefined();
+    });
+  });
+
   describe('getBlockchainInfo', () => {
     it('getBlockchainInfo method should be defined', () => {
       expect(blockchainController.getBlockchainInfo).toBeDefined();
