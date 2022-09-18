@@ -42,6 +42,13 @@ export class BitcoinCoreService {
     });
   }
 
+  // TODO: remove any type
+  getBlockFilter(blockHash: string): Observable<any> {
+    return this.rpcRequest('getblockfilter', {
+      blockhash: blockHash,
+    });
+  }
+
   // TODO: add returned data type
   rpcRequest(method: string, params?: any) {
     const payload = {

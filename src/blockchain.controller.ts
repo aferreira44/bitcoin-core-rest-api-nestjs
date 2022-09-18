@@ -79,7 +79,10 @@ export class BlockchainController {
   }
 
   @Get('/block/:blockHash')
-  getblock(@Req() req: Request, @Param('blockHash') blockHash: string,): Observable<any> {
+  getblock(
+    @Req() req: Request,
+    @Param('blockHash') blockHash: string,
+  ): Observable<any> {
     return this.bitcoinCoreService.getBlock(blockHash).pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
@@ -92,8 +95,21 @@ export class BlockchainController {
     );
   }
 
-  getblockfilter(): Observable<any> {
-    throw new HttpException('Not implemented', HttpStatus.NOT_IMPLEMENTED);
+  @Get('/blockFilter/:blockHash')
+  getblockfilter(
+    @Req() req: Request,
+    @Param('blockHash') blockHash: string,
+  ): Observable<any> {
+    return this.bitcoinCoreService.getBlockFilter(blockHash).pipe(
+      map((response) => {
+        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
+        return response;
+      }),
+      catchError((error) => {
+        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
+        throw new HttpException(error.message, error.status);
+      }),
+    );
   }
 
   getblockfrompeer(): Observable<any> {
