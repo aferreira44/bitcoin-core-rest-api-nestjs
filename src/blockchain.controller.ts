@@ -19,61 +19,6 @@ import { BitcoinCoreService } from '../libs/bitcoin-core/src/bitcoin-core.servic
 export class BlockchainController {
   constructor(private readonly bitcoinCoreService: BitcoinCoreService) {}
 
-  @Get('/blockchainInfo')
-  @ApiOperation({
-    summary:
-      'Returns an object containing various state info regarding blockchain processing',
-  })
-  getBlockchainInfo(@Req() req: Request): Observable<any> {
-    return this.bitcoinCoreService.getBlockchainInfo().pipe(
-      map((response) => {
-        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
-        return response;
-      }),
-      catchError((error) => {
-        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
-        throw new HttpException(error.message, error.status);
-      }),
-    );
-  }
-
-  @Get('/blockHash/:blockHeight')
-  @ApiOperation({
-    summary: 'Returns hash of block in best-block-chain at height provided',
-  })
-  getBlockHash(
-    @Req() req: Request,
-    @Param('blockHeight') blockHeight: number,
-  ): Observable<any> {
-    return this.bitcoinCoreService.getBlockHash(blockHeight).pipe(
-      map((response) => {
-        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
-        return response;
-      }),
-      catchError((error) => {
-        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
-        throw new HttpException(error.message, error.status);
-      }),
-    );
-  }
-
-  @Get('/blockCount')
-  @ApiOperation({
-    summary: 'Returns the height of the most-work fully-validated chain',
-  })
-  getBlockCount(@Req() req: Request): Observable<any> {
-    return this.bitcoinCoreService.getBlockCount().pipe(
-      map((response) => {
-        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
-        return response;
-      }),
-      catchError((error) => {
-        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
-        throw new HttpException(error.message, error.status);
-      }),
-    );
-  }
-
   @Get('/bestBlockHash')
   @ApiOperation({
     summary:
@@ -101,6 +46,41 @@ export class BlockchainController {
     @Param('blockHash') blockHash: string,
   ): Observable<any> {
     return this.bitcoinCoreService.getBlock(blockHash).pipe(
+      map((response) => {
+        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
+        return response;
+      }),
+      catchError((error) => {
+        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
+        throw new HttpException(error.message, error.status);
+      }),
+    );
+  }
+
+  @Get('/blockchainInfo')
+  @ApiOperation({
+    summary:
+      'Returns an object containing various state info regarding blockchain processing',
+  })
+  getBlockchainInfo(@Req() req: Request): Observable<any> {
+    return this.bitcoinCoreService.getBlockchainInfo().pipe(
+      map((response) => {
+        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
+        return response;
+      }),
+      catchError((error) => {
+        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
+        throw new HttpException(error.message, error.status);
+      }),
+    );
+  }
+
+  @Get('/blockCount')
+  @ApiOperation({
+    summary: 'Returns the height of the most-work fully-validated chain',
+  })
+  getBlockCount(@Req() req: Request): Observable<any> {
+    return this.bitcoinCoreService.getBlockCount().pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
@@ -142,6 +122,26 @@ export class BlockchainController {
     @Param('peerId') peerId: number,
   ): Observable<any> {
     return this.bitcoinCoreService.getBlockFromPeer(blockHash, peerId).pipe(
+      map((response) => {
+        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
+        return response;
+      }),
+      catchError((error) => {
+        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
+        throw new HttpException(error.message, error.status);
+      }),
+    );
+  }
+
+  @Get('/blockHash/:blockHeight')
+  @ApiOperation({
+    summary: 'Returns hash of block in best-block-chain at height provided',
+  })
+  getBlockHash(
+    @Req() req: Request,
+    @Param('blockHeight') blockHeight: number,
+  ): Observable<any> {
+    return this.bitcoinCoreService.getBlockHash(blockHeight).pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;

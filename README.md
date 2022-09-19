@@ -38,11 +38,11 @@ $ yarn test:cov
 
 ### Blockchain
 - [x] getbestblockhash
-- [ ] getblock "blockhash" ( verbosity )
+- [x] getblock "blockhash" ( verbosity )
 - [x] getblockchaininfo
 - [x] getblockcount
-- [ ] getblockfilter "blockhash" ( "filtertype" )
-- [ ] getblockfrompeer "blockhash" peer_id
+- [x] getblockfilter "blockhash" ( "filtertype" )
+- [x] getblockfrompeer "blockhash" peer_id
 - [x] getblockhash height
 - [ ] getblockheader "blockhash" ( verbose )
 - [ ] getblockstats hash_or_height ( stats )
