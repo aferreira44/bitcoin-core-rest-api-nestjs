@@ -8,7 +8,7 @@ import {
   Req,
   Res,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Request, Response } from 'express';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -20,6 +20,10 @@ export class BlockchainController {
   constructor(private readonly bitcoinCoreService: BitcoinCoreService) {}
 
   @Get('/blockchainInfo')
+  @ApiOperation({
+    summary:
+      'Returns an object containing various state info regarding blockchain processing',
+  })
   getBlockchainInfo(@Req() req: Request): Observable<any> {
     return this.bitcoinCoreService.getBlockchainInfo().pipe(
       map((response) => {
@@ -34,6 +38,9 @@ export class BlockchainController {
   }
 
   @Get('/blockHash/:blockHeight')
+  @ApiOperation({
+    summary: 'Returns hash of block in best-block-chain at height provided',
+  })
   getBlockHash(
     @Req() req: Request,
     @Param('blockHeight') blockHeight: number,
@@ -51,6 +58,9 @@ export class BlockchainController {
   }
 
   @Get('/blockCount')
+  @ApiOperation({
+    summary: 'Returns the height of the most-work fully-validated chain',
+  })
   getBlockCount(@Req() req: Request): Observable<any> {
     return this.bitcoinCoreService.getBlockCount().pipe(
       map((response) => {
@@ -65,6 +75,10 @@ export class BlockchainController {
   }
 
   @Get('/bestBlockHash')
+  @ApiOperation({
+    summary:
+      'Returns the hash of the best (tip) block in the most-work fully-validated chain',
+  })
   getBestBlockHash(@Req() req: Request): Observable<any> {
     return this.bitcoinCoreService.getBestBlockHash().pipe(
       map((response) => {
@@ -79,6 +93,9 @@ export class BlockchainController {
   }
 
   @Get('/block/:blockHash')
+  @ApiOperation({
+    summary: 'Returns an Object with information about block <hash>',
+  })
   getblock(
     @Req() req: Request,
     @Param('blockHash') blockHash: string,
@@ -96,6 +113,9 @@ export class BlockchainController {
   }
 
   @Get('/blockFilter/:blockHash')
+  @ApiOperation({
+    summary: 'Retrieve a BIP 157 content filter for a particular block',
+  })
   getblockfilter(
     @Req() req: Request,
     @Param('blockHash') blockHash: string,
