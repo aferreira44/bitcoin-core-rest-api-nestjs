@@ -173,8 +173,29 @@ export class BlockchainController {
     );
   }
 
-  getblockstats(): Observable<any> {
-    throw new HttpException('Not implemented', HttpStatus.NOT_IMPLEMENTED);
+  @Get('/blockStats/:hashOrHeight')
+  @ApiOperation({
+    summary:
+      'Compute per block statistics for a given window. All amounts are in satoshis.',
+  })
+  getBlockStats(
+    @Req() req: Request,
+    // TODO: check if it can be number (string | number), don't load parameter in Swagger UI
+    @Param('hashOrHeight') hashOrHeight: string,
+  ): Observable<any> {
+    const isHash = new RegExp('[a-zA-Z]').test(hashOrHeight);
+    return this.bitcoinCoreService
+      .getBlockStats(isHash ? hashOrHeight : parseInt(hashOrHeight, 10))
+      .pipe(
+        map((response) => {
+          Logger.log(`${req.path}: ${JSON.stringify(response)}`);
+          return response;
+        }),
+        catchError((error) => {
+          Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
+          throw new HttpException(error.message, error.status);
+        }),
+      );
   }
 
   getchaintips(): Observable<any> {

@@ -45,7 +45,7 @@ $ yarn test:cov
 - [x] getblockfrompeer "blockhash" peer_id
 - [x] getblockhash height
 - [x] getblockheader "blockhash" ( verbose )
-- [ ] getblockstats hash_or_height ( stats )
+- [x] getblockstats hash_or_height ( stats )
 - [ ] getchaintips
 - [ ] getchaintxstats ( nblocks "blockhash" )
 - [ ] getdeploymentinfo ( "blockhash" )

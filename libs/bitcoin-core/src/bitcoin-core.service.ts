@@ -64,6 +64,12 @@ export class BitcoinCoreService {
     });
   }
 
+  getBlockStats(hashOrHeight: string | number): Observable<any> {
+    return this.rpcRequest('getblockstats', {
+      hash_or_height: hashOrHeight,
+    });
+  }
+
   // TODO: add returned data type
   rpcRequest(method: string, params?: any) {
     const payload = {
