@@ -132,8 +132,25 @@ export class BlockchainController {
     );
   }
 
-  getblockfrompeer(): Observable<any> {
-    throw new HttpException('Not implemented', HttpStatus.NOT_IMPLEMENTED);
+  @Get('/blockfrompeer/:blockHash')
+  @ApiOperation({
+    summary: 'Attempt to fetch block from a given peer',
+  })
+  getblockfrompeer(
+    @Req() req: Request,
+    @Param('blockHash') blockHash: string,
+    @Param('peerId') peerId: number,
+  ): Observable<any> {
+    return this.bitcoinCoreService.getBlockFromPeer(blockHash, peerId).pipe(
+      map((response) => {
+        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
+        return response;
+      }),
+      catchError((error) => {
+        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
+        throw new HttpException(error.message, error.status);
+      }),
+    );
   }
 
   getblockheader(): Observable<any> {

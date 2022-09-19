@@ -49,6 +49,14 @@ export class BitcoinCoreService {
     });
   }
 
+  // TODO: remove any type
+  getBlockFromPeer(blockHash: string, peerId: number): Observable<any> {
+    return this.rpcRequest('getblockfrompeer', {
+      blockhash: blockHash,
+      peer_id: peerId,
+    });
+  }
+
   // TODO: add returned data type
   rpcRequest(method: string, params?: any) {
     const payload = {
