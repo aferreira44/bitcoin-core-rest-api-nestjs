@@ -14,23 +14,6 @@ export class BitcoinCoreService {
   ) {}
 
   // TODO: remove any type
-  getBlockchainInfo(): Observable<any> {
-    return this.rpcRequest('getblockchaininfo');
-  }
-
-  // TODO: remove any type
-  getBlockHash(height: number): Observable<any> {
-    return this.rpcRequest('getblockhash', {
-      height: Number(height),
-    });
-  }
-
-  // TODO: remove any type
-  getBlockCount(): Observable<any> {
-    return this.rpcRequest('getblockcount');
-  }
-
-  // TODO: remove any type
   getBestBlockHash(): Observable<any> {
     return this.rpcRequest('getbestblockhash');
   }
@@ -40,6 +23,16 @@ export class BitcoinCoreService {
     return this.rpcRequest('getblock', {
       blockhash: blockHash,
     });
+  }
+
+  // TODO: remove any type
+  getBlockchainInfo(): Observable<any> {
+    return this.rpcRequest('getblockchaininfo');
+  }
+
+  // TODO: remove any type
+  getBlockCount(): Observable<any> {
+    return this.rpcRequest('getblockcount');
   }
 
   // TODO: remove any type
@@ -54,6 +47,20 @@ export class BitcoinCoreService {
     return this.rpcRequest('getblockfrompeer', {
       blockhash: blockHash,
       peer_id: peerId,
+    });
+  }
+
+  // TODO: remove any type
+  getBlockHash(height: number): Observable<any> {
+    return this.rpcRequest('getblockhash', {
+      height: Number(height),
+    });
+  }
+
+  // TODO: remove any type
+  getBlockHeader(blockHash: string): Observable<any> {
+    return this.rpcRequest('getblockheader', {
+      blockhash: blockHash,
     });
   }
 

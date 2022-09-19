@@ -41,7 +41,7 @@ export class BlockchainController {
   @ApiOperation({
     summary: 'Returns an Object with information about block <hash>',
   })
-  getblock(
+  getBlock(
     @Req() req: Request,
     @Param('blockHash') blockHash: string,
   ): Observable<any> {
@@ -96,7 +96,7 @@ export class BlockchainController {
   @ApiOperation({
     summary: 'Retrieve a BIP 157 content filter for a particular block',
   })
-  getblockfilter(
+  getBlockFilter(
     @Req() req: Request,
     @Param('blockHash') blockHash: string,
   ): Observable<any> {
@@ -116,7 +116,7 @@ export class BlockchainController {
   @ApiOperation({
     summary: 'Attempt to fetch block from a given peer',
   })
-  getblockfrompeer(
+  getBlockFromPeer(
     @Req() req: Request,
     @Param('blockHash') blockHash: string,
     @Param('peerId') peerId: number,
@@ -153,8 +153,24 @@ export class BlockchainController {
     );
   }
 
-  getblockheader(): Observable<any> {
-    throw new HttpException('Not implemented', HttpStatus.NOT_IMPLEMENTED);
+  @Get('/blockHeader/:blockHash')
+  @ApiOperation({
+    summary: 'Returns an Object with information about blockheader <hash>',
+  })
+  getBlockHeader(
+    @Req() req: Request,
+    @Param('blockHash') blockHash: string,
+  ): Observable<any> {
+    return this.bitcoinCoreService.getBlockHeader(blockHash).pipe(
+      map((response) => {
+        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
+        return response;
+      }),
+      catchError((error) => {
+        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
+        throw new HttpException(error.message, error.status);
+      }),
+    );
   }
 
   getblockstats(): Observable<any> {
