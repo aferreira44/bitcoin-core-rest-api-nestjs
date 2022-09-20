@@ -198,8 +198,22 @@ export class BlockchainController {
       );
   }
 
-  getchaintips(): Observable<any> {
-    throw new HttpException('Not implemented', HttpStatus.NOT_IMPLEMENTED);
+  @Get('/chainTips')
+  @ApiOperation({
+    summary:
+      'Return information about all known tips in the block tree, including the main chain as well as orphaned branches.',
+  })
+  getChainTips(@Req() req: Request): Observable<any> {
+    return this.bitcoinCoreService.getChainTips().pipe(
+      map((response) => {
+        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
+        return response;
+      }),
+      catchError((error) => {
+        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
+        throw new HttpException(error.message, error.status);
+      }),
+    );
   }
 
   getchaintxstats(): Observable<any> {

@@ -64,10 +64,16 @@ export class BitcoinCoreService {
     });
   }
 
+  // TODO: remove any type
   getBlockStats(hashOrHeight: string | number): Observable<any> {
     return this.rpcRequest('getblockstats', {
       hash_or_height: hashOrHeight,
     });
+  }
+
+  // TODO: remove any type
+  getChainTips(): Observable<any> {
+    return this.rpcRequest('getchaintips');
   }
 
   // TODO: add returned data type

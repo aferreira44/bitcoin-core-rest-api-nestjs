@@ -46,7 +46,7 @@ $ yarn test:cov
 - [x] getblockhash height
 - [x] getblockheader "blockhash" ( verbose )
 - [x] getblockstats hash_or_height ( stats )
-- [ ] getchaintips
+- [x] getchaintips
 - [ ] getchaintxstats ( nblocks "blockhash" )
 - [ ] getdeploymentinfo ( "blockhash" )
 - [ ] getdifficulty
