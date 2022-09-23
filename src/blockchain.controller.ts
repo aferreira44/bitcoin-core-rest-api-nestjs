@@ -5,10 +5,11 @@ import {
   HttpStatus,
   Logger,
   Param,
+  Query,
   Req,
   Res,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { Request, Response } from 'express';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -216,8 +217,29 @@ export class BlockchainController {
     );
   }
 
-  getchaintxstats(): Observable<any> {
-    throw new HttpException('Not implemented', HttpStatus.NOT_IMPLEMENTED);
+  @Get('/chainTxStats')
+  @ApiOperation({
+    summary:
+      'Compute statistics about the total number and rate of transactions in the chain.',
+  })
+  @ApiQuery({ name: 'nBlocks', required: false, type: Number })
+  @ApiQuery({ name: 'blockHash', required: false, type: String })
+  getChainTxStats(
+    @Req() req: Request,
+    @Query('nBlocks') nBlocks?: number,
+    @Query('blockHash') blockHash?: string,
+  ): Observable<any> {
+    // TODO: improve params object
+    return this.bitcoinCoreService.getChainTxStats(nBlocks, blockHash).pipe(
+      map((response) => {
+        Logger.log(`${req.path}: ${JSON.stringify(response)}`);
+        return response;
+      }),
+      catchError((error) => {
+        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
+        throw new HttpException(error.message, error.status);
+      }),
+    );
   }
 
   getdeploymentinfo(): Observable<any> {

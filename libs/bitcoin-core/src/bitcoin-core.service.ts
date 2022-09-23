@@ -76,6 +76,14 @@ export class BitcoinCoreService {
     return this.rpcRequest('getchaintips');
   }
 
+  // TODO: improve params object and validation per method
+  getChainTxStats(nBlocks: number, blockHash: string) {
+    return this.rpcRequest('getchaintxstats', {
+      nblocks: nBlocks,
+      blockhash: blockHash,
+    });
+  }
+
   // TODO: add returned data type
   rpcRequest(method: string, params?: any) {
     const payload = {
