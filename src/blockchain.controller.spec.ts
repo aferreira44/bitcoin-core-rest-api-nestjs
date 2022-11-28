@@ -23,7 +23,7 @@ describe('BlockchainController', () => {
 
   describe('getblock', () => {
     it('getblock method should be defined', () => {
-      expect(blockchainController.getblock).toBeDefined();
+      expect(blockchainController.getBlock).toBeDefined();
     });
   });
 
@@ -41,13 +41,13 @@ describe('BlockchainController', () => {
 
   describe('getblockfilter', () => {
     it('getblockfilter method should be defined', () => {
-      expect(blockchainController.getblockfilter).toBeDefined();
+      expect(blockchainController.getBlockFilter).toBeDefined();
     });
   });
 
   describe('getblockfrompeer', () => {
     it('getblockfrompeer method should be defined', () => {
-      expect(blockchainController.getblockfrompeer).toBeDefined();
+      expect(blockchainController.getBlockFromPeer).toBeDefined();
     });
   });
 
@@ -59,25 +59,25 @@ describe('BlockchainController', () => {
 
   describe('getblockheader', () => {
     it('getblockheader method should be defined', () => {
-      expect(blockchainController.getblockheader).toBeDefined();
+      expect(blockchainController.getBlockHeader).toBeDefined();
     });
   });
 
   describe('getblockstats', () => {
     it('getblockstats method should be defined', () => {
-      expect(blockchainController.getblockstats).toBeDefined();
+      expect(blockchainController.getBlockStats).toBeDefined();
     });
   });
 
   describe('getchaintips', () => {
     it('getchaintips method should be defined', () => {
-      expect(blockchainController.getchaintips).toBeDefined();
+      expect(blockchainController.getChainTips).toBeDefined();
     });
   });
 
   describe('getchaintxstats', () => {
     it('getchaintxstats method should be defined', () => {
-      expect(blockchainController.getchaintxstats).toBeDefined();
+      expect(blockchainController.getChainTxStats).toBeDefined();
     });
   });
 
