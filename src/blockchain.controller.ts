@@ -7,7 +7,7 @@ import {
   Param,
   Query,
   Req,
-  Res,
+  Catch,
 } from '@nestjs/common';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { Request, Response } from 'express';
@@ -32,7 +32,6 @@ export class BlockchainController {
         return response;
       }),
       catchError((error) => {
-        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
         throw new HttpException(error.message, error.status);
       }),
     );
@@ -236,7 +235,7 @@ export class BlockchainController {
         return response;
       }),
       catchError((error) => {
-        Logger.error(`${req.path}: ${JSON.stringify(error.response)}`);
+        Logger.error(`${req.path}: ${JSON.stringify(error)}`);
         throw new HttpException(error.message, error.status);
       }),
     );

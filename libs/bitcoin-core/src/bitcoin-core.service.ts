@@ -108,15 +108,7 @@ export class BitcoinCoreService {
           return response.data.result;
         }),
         catchError((error) => {
-          Logger.error(
-            `BitcoinCoreService.rpcRequest: ${JSON.stringify(
-              error.response.data,
-            )}`,
-          );
-          throw new HttpException(
-            error.response.data.error.message,
-            error.response.status,
-          );
+          throw new HttpException(error.message, 500);
         }),
       );
   }

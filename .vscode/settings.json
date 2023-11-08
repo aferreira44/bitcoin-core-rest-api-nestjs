@@ -1,0 +1,6 @@
+{
+  "sonarlint.connectedMode.project": {
+    "connectionId": "aferreira44",
+    "projectKey": "aferreira44_bitcoin-core-rest-api-nestjs"
+  }
+}
