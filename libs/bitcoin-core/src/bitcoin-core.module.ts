@@ -1,10 +1,10 @@
-import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { BitcoinCoreService } from './bitcoin-core.service';
+import { BlockchainModule } from './blockchain.module';
+import { ControlModule } from './control.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), HttpModule],
+  imports: [BlockchainModule, ControlModule],
   providers: [BitcoinCoreService],
   exports: [BitcoinCoreService],
 })
