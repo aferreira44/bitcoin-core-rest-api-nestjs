@@ -82,7 +82,7 @@ export class BlockchainService {
     });
   }
 
-  getblockhash(height: number): Observable<any> {
+  getBlockHash(height: number): Observable<any> {
     return this.rpcService.request(this.availableMethods.GET_BLOCK_HASH, {
       height: Number(height),
     });

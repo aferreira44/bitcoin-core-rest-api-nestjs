@@ -18,7 +18,7 @@ import { BitcoinCoreService } from '../libs/bitcoin-core/src/bitcoin-core.servic
 @ApiTags('Blockchain')
 @Controller('/blockchain')
 export class BlockchainController {
-  constructor(private readonly bitcoinCoreService: BitcoinCoreService) {}
+  constructor(private readonly bitcoinCore: BitcoinCoreService) {}
 
   @Get('/bestBlockHash')
   @ApiOperation({
@@ -26,7 +26,7 @@ export class BlockchainController {
       'Returns the hash of the best (tip) block in the most-work fully-validated chain',
   })
   getBestBlockHash(@Req() req: Request): Observable<any> {
-    return this.bitcoinCoreService.getBestBlockHash().pipe(
+    return this.bitcoinCore.blockchain.getBestBlockHash().pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
@@ -45,7 +45,7 @@ export class BlockchainController {
     @Req() req: Request,
     @Param('blockHash') blockHash: string,
   ): Observable<any> {
-    return this.bitcoinCoreService.getBlock(blockHash).pipe(
+    return this.bitcoinCore.blockchain.getBlock(blockHash).pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
@@ -63,7 +63,7 @@ export class BlockchainController {
       'Returns an object containing various state info regarding blockchain processing',
   })
   getBlockchainInfo(@Req() req: Request): Observable<any> {
-    return this.bitcoinCoreService.getBlockchainInfo().pipe(
+    return this.bitcoinCore.blockchain.getBlockchainInfo().pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
@@ -80,7 +80,7 @@ export class BlockchainController {
     summary: 'Returns the height of the most-work fully-validated chain',
   })
   getBlockCount(@Req() req: Request): Observable<any> {
-    return this.bitcoinCoreService.getBlockCount().pipe(
+    return this.bitcoinCore.blockchain.getBlockCount().pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
@@ -100,7 +100,7 @@ export class BlockchainController {
     @Req() req: Request,
     @Param('blockHash') blockHash: string,
   ): Observable<any> {
-    return this.bitcoinCoreService.getBlockFilter(blockHash).pipe(
+    return this.bitcoinCore.blockchain.getBlockFilter(blockHash).pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
@@ -121,7 +121,7 @@ export class BlockchainController {
     @Param('blockHash') blockHash: string,
     @Param('peerId') peerId: number,
   ): Observable<any> {
-    return this.bitcoinCoreService.getBlockFromPeer(blockHash, peerId).pipe(
+    return this.bitcoinCore.blockchain.getBlockFromPeer(blockHash, peerId).pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
@@ -141,7 +141,7 @@ export class BlockchainController {
     @Req() req: Request,
     @Param('blockHeight') blockHeight: number,
   ): Observable<any> {
-    return this.bitcoinCoreService.getBlockHash(blockHeight).pipe(
+    return this.bitcoinCore.blockchain.getBlockHash(blockHeight).pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
@@ -161,7 +161,7 @@ export class BlockchainController {
     @Req() req: Request,
     @Param('blockHash') blockHash: string,
   ): Observable<any> {
-    return this.bitcoinCoreService.getBlockHeader(blockHash).pipe(
+    return this.bitcoinCore.blockchain.getBlockHeader(blockHash).pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
@@ -184,7 +184,7 @@ export class BlockchainController {
     @Param('hashOrHeight') hashOrHeight: string,
   ): Observable<any> {
     const isHash = new RegExp('[a-zA-Z]').test(hashOrHeight);
-    return this.bitcoinCoreService
+    return this.bitcoinCore.blockchain
       .getBlockStats(isHash ? hashOrHeight : parseInt(hashOrHeight, 10))
       .pipe(
         map((response) => {
@@ -204,7 +204,7 @@ export class BlockchainController {
       'Return information about all known tips in the block tree, including the main chain as well as orphaned branches.',
   })
   getChainTips(@Req() req: Request): Observable<any> {
-    return this.bitcoinCoreService.getChainTips().pipe(
+    return this.bitcoinCore.blockchain.getChainTips().pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
@@ -229,7 +229,7 @@ export class BlockchainController {
     @Query('blockHash') blockHash?: string,
   ): Observable<any> {
     // TODO: improve params object
-    return this.bitcoinCoreService.getChainTxStats(nBlocks, blockHash).pipe(
+    return this.bitcoinCore.blockchain.getChainTxStats(nBlocks, blockHash).pipe(
       map((response) => {
         Logger.log(`${req.path}: ${JSON.stringify(response)}`);
         return response;
