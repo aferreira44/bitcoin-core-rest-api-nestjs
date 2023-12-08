@@ -15,3 +15,11 @@ export interface ScanObjectDescriptor {
 }
 
 export type ScanObject = string | ScanObjectDescriptor;
+
+export interface TemplateRequest {
+  mode?: 'template' | 'proposal';
+  capabilities?: string[];
+  rules: string[];
+  longpollid?: string;
+  data?: string;
+}
